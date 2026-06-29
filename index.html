@@ -1,0 +1,1388 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الحب وحده لا يكفي لنجاح العلاقة</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap');
+
+        :root {
+            --bg-primary: #f0f4f8;
+            --bg-secondary: #ffffff;
+            --bg-tertiary: #f8fafc;
+            --text-primary: #1e293b;
+            --text-secondary: #475569;
+            --text-tertiary: #94a3b8;
+            --accent: #6366f1;
+            --accent-light: #818cf8;
+            --accent-glow: rgba(99, 102, 241, 0.3);
+            --danger: #ef4444;
+            --danger-light: #fca5a5;
+            --border: #e2e8f0;
+            --border-light: #f1f5f9;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.04);
+            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+            --shadow-xl: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+            --glass-bg: rgba(255, 255, 255, 0.8);
+            --glass-border: rgba(255, 255, 255, 0.6);
+            --glass-shadow: 0 8px 32px rgba(99, 102, 241, 0.08);
+            --gradient-primary: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #a78bfa 100%);
+            --gradient-danger: linear-gradient(135deg, #ef4444 0%, #f97316 100%);
+            --gradient-bg: radial-gradient(circle at 0% 0%, rgba(99, 102, 241, 0.03) 0%, transparent 50%),
+                            radial-gradient(circle at 100% 100%, rgba(139, 92, 246, 0.03) 0%, transparent 50%);
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #0b1120;
+            --bg-secondary: #111827;
+            --bg-tertiary: #1e293b;
+            --text-primary: #f1f5f9;
+            --text-secondary: #cbd5e1;
+            --text-tertiary: #64748b;
+            --accent: #818cf8;
+            --accent-light: #6366f1;
+            --accent-glow: rgba(129, 140, 248, 0.4);
+            --danger: #fca5a5;
+            --danger-light: #ef4444;
+            --border: #1e293b;
+            --border-light: #334155;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.2);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -2px rgba(0, 0, 0, 0.2);
+            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
+            --shadow-xl: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            --glass-bg: rgba(17, 24, 39, 0.7);
+            --glass-border: rgba(255, 255, 255, 0.05);
+            --glass-shadow: 0 8px 32px rgba(129, 140, 248, 0.15);
+            --gradient-bg: radial-gradient(circle at 0% 0%, rgba(129, 140, 248, 0.08) 0%, transparent 50%),
+                            radial-gradient(circle at 100% 100%, rgba(139, 92, 246, 0.08) 0%, transparent 50%);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: var(--bg-primary);
+            background-image: var(--gradient-bg);
+            color: var(--text-primary);
+            line-height: 1.9;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow-x: hidden;
+        }
+
+        /* ===== شريط التقدم الفاخر ===== */
+        .progress-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            z-index: 1000;
+            background: transparent;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: var(--gradient-primary);
+            width: 0%;
+            border-radius: 0 3px 3px 0;
+            box-shadow: 0 0 20px var(--accent-glow);
+            transition: width 0.15s linear;
+        }
+
+        /* ===== الحاوية الرئيسية ===== */
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 30px 20px 50px;
+        }
+
+        /* ===== الصورة الرئيسية ===== */
+        .main-image-wrapper {
+            position: relative;
+            margin-bottom: 60px;
+            border-radius: 32px;
+            overflow: hidden;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--glass-shadow);
+            transform: translateY(0);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .main-image-wrapper:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl), var(--glass-shadow);
+        }
+
+        .main-image-wrapper img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            filter: brightness(1.02);
+        }
+
+        .main-image-wrapper:hover img {
+            transform: scale(1.03);
+        }
+
+        .image-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 50%;
+            background: linear-gradient(to top, var(--bg-secondary) 0%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            pointer-events: none;
+        }
+
+        .main-image-wrapper:hover .image-overlay {
+            opacity: 0.3;
+        }
+
+        /* ===== الهيدر ===== */
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--border);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 25px;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+        }
+
+        .badge:hover {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px var(--accent-glow);
+        }
+
+        .badge-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+            animation: pulse-dot 2s infinite;
+        }
+
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.5); }
+        }
+
+        header h1 {
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-weight: 900;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+            letter-spacing: -1px;
+            line-height: 1.3;
+        }
+
+        header .subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+            margin-bottom: 20px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .read-time {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--bg-tertiary);
+            color: var(--text-secondary);
+            padding: 10px 22px;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .read-time:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            box-shadow: 0 5px 15px var(--accent-glow);
+        }
+
+        .read-time svg {
+            animation: rotate-slow 3s linear infinite;
+        }
+
+        @keyframes rotate-slow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* ===== بطاقة المقدمة ===== */
+        .intro-card {
+            position: relative;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 35px 30px;
+            margin-bottom: 50px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            box-shadow: var(--shadow-md);
+        }
+
+        .intro-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--gradient-danger);
+            border-radius: 5px;
+        }
+
+        .intro-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(to left, transparent, var(--danger-light), transparent);
+            opacity: 0.3;
+        }
+
+        .intro-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .intro-card p {
+            font-size: 1.1rem;
+            margin: 0 0 15px 0;
+            color: var(--text-primary);
+            position: relative;
+            z-index: 1;
+        }
+
+        .intro-card p:last-child {
+            margin-bottom: 0;
+            font-weight: 700;
+            color: var(--danger);
+            font-size: 1.15rem;
+        }
+
+        /* ===== العناوين ===== */
+        .section-title {
+            font-size: 1.6rem;
+            color: var(--text-primary);
+            margin: 50px 0 25px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            position: relative;
+        }
+
+        .section-title::before {
+            content: '';
+            width: 5px;
+            height: 32px;
+            background: var(--gradient-primary);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .section-title:hover::before {
+            height: 40px;
+            box-shadow: 0 0 20px var(--accent-glow);
+        }
+
+        .section-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 800;
+            color: var(--accent);
+            margin-left: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .section-title:hover .section-number {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+            box-shadow: 0 5px 20px var(--accent-glow);
+        }
+
+        /* ===== بطاقات المحتوى ===== */
+        .content-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 35px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .content-card:hover {
+            box-shadow: var(--shadow-lg);
+            border-color: var(--accent-light);
+            transform: translateY(-3px);
+        }
+
+        .content-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-primary);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .content-card:hover::after {
+            opacity: 0.02;
+        }
+
+        .content-card p {
+            font-size: 1.08rem;
+            color: var(--text-primary);
+            margin: 0 0 18px 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .highlight {
+            display: inline-block;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
+            color: var(--accent);
+            padding: 6px 14px;
+            font-weight: 700;
+            border-radius: 8px;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .highlight:hover {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+            box-shadow: 0 5px 20px var(--accent-glow);
+        }
+
+        /* ===== القوائم ===== */
+        .sub-list {
+            list-style: none;
+            padding: 0;
+            margin: 25px 0 0 0;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .sub-list li {
+            position: relative;
+            padding-right: 30px;
+            font-size: 1.08rem;
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+
+        .sub-list li::before {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 10px;
+            width: 10px;
+            height: 10px;
+            background: var(--accent);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .sub-list li:hover::before {
+            transform: scale(1.4);
+            box-shadow: 0 0 15px var(--accent-glow);
+        }
+
+        .sub-list li strong {
+            color: var(--text-primary);
+            font-weight: 800;
+        }
+
+        /* ===== الاقتباس ===== */
+        .quote-block {
+            text-align: center;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 45px 35px;
+            margin: 60px 0;
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--accent);
+            box-shadow: var(--glass-shadow);
+            position: relative;
+            transition: all 0.4s ease;
+        }
+
+        .quote-block:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-xl), var(--glass-shadow);
+        }
+
+        .quote-block::before,
+        .quote-block::after {
+            font-size: 5rem;
+            color: var(--accent);
+            opacity: 0.1;
+            position: absolute;
+            font-family: serif;
+            line-height: 1;
+        }
+
+        .quote-block::before {
+            content: '"';
+            top: 5px;
+            right: 25px;
+        }
+
+        .quote-block::after {
+            content: '"';
+            bottom: -30px;
+            left: 25px;
+        }
+
+        /* ===== الفوتر ===== */
+        footer {
+            margin-top: 60px;
+            padding: 40px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            text-align: center;
+            box-shadow: var(--glass-shadow);
+            transition: all 0.4s ease;
+        }
+
+        footer:hover {
+            box-shadow: var(--shadow-lg), var(--glass-shadow);
+        }
+
+        footer h3 {
+            color: var(--danger);
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        footer p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin: 0 0 20px 0;
+        }
+
+        /* ===== قسم النقاش ===== */
+        .modern-feedback-section {
+            background: var(--glass-bg);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border: 1px solid var(--glass-border);
+            border-radius: 32px;
+            padding: 50px 40px;
+            margin-top: 50px;
+            margin-bottom: 40px;
+            text-align: center;
+            box-shadow: var(--glass-shadow);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .modern-feedback-section:hover {
+            box-shadow: var(--shadow-lg), var(--glass-shadow);
+        }
+
+        .modern-feedback-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient-primary);
+        }
+
+        .feedback-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin: 0 0 12px;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .feedback-desc {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            margin-bottom: 30px;
+            line-height: 1.8;
+            font-weight: 500;
+        }
+
+        .feedback-textarea {
+            width: 100%;
+            padding: 20px;
+            border-radius: 16px;
+            border: 2px solid var(--border);
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            font-family: 'Cairo', sans-serif;
+            font-size: 1rem;
+            resize: vertical;
+            min-height: 140px;
+            margin-bottom: 25px;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        .feedback-textarea:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 6px rgba(99, 102, 241, 0.1);
+        }
+
+        .btn-send-feedback {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background: var(--gradient-primary);
+            color: #ffffff;
+            font-size: 1.1rem;
+            font-weight: 700;
+            padding: 15px 35px;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px var(--accent-glow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-send-feedback::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn-send-feedback:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 35px var(--accent-glow);
+        }
+
+        .btn-send-feedback:hover::before {
+            left: 100%;
+        }
+
+        .btn-send-feedback svg {
+            width: 22px;
+            height: 22px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        /* ===== زر الواتساب ===== */
+        .share-container {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 1px solid var(--border);
+        }
+
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: #ffffff !important;
+            font-size: 1.15rem;
+            font-weight: 700;
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .whatsapp-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .whatsapp-btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 35px rgba(37, 211, 102, 0.4);
+        }
+
+        .whatsapp-btn:hover::before {
+            left: 100%;
+        }
+
+        .whatsapp-btn svg {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+        }
+
+        /* ===== المودال ===== */
+        .custom-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .custom-modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .custom-modal-box {
+            background: var(--bg-secondary);
+            border-radius: 24px;
+            padding: 45px 35px;
+            width: 90%;
+            max-width: 450px;
+            text-align: center;
+            box-shadow: var(--shadow-xl);
+            transform: translateY(30px) scale(0.95);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid var(--border);
+        }
+
+        .custom-modal-overlay.active .custom-modal-box {
+            transform: translateY(0) scale(1);
+        }
+
+        .modal-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--gradient-primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px auto;
+            box-shadow: 0 10px 30px var(--accent-glow);
+        }
+
+        .modal-icon svg {
+            width: 32px;
+            height: 32px;
+            stroke: currentColor;
+            stroke-width: 2;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .custom-modal-title {
+            color: var(--text-primary);
+            font-size: 1.3rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+
+        .custom-modal-desc {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            margin-bottom: 30px;
+            line-height: 1.7;
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .btn-modal-confirm {
+            background: var(--gradient-primary);
+            color: #fff;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 14px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            flex: 1;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            box-shadow: 0 8px 25px var(--accent-glow);
+        }
+
+        .btn-modal-confirm:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px var(--accent-glow);
+        }
+
+        .btn-modal-cancel {
+            background: transparent;
+            color: var(--text-primary);
+            border: 2px solid var(--border);
+            padding: 14px 28px;
+            border-radius: 14px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            flex: 1;
+            transition: all 0.3s ease;
+        }
+
+        .btn-modal-cancel:hover {
+            background: var(--bg-tertiary);
+            border-color: var(--text-tertiary);
+        }
+
+        /* ===== زر تبديل المظهر ===== */
+        .theme-toggle-btn {
+            position: fixed;
+            bottom: 35px;
+            left: 35px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--glass-shadow);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .theme-toggle-btn:hover {
+            transform: translateY(-5px) rotate(10deg);
+            box-shadow: var(--shadow-lg), var(--glass-shadow);
+        }
+
+        .theme-toggle-btn:active {
+            transform: translateY(0) rotate(0deg);
+        }
+
+        .theme-toggle-btn svg {
+            width: 26px;
+            height: 26px;
+            fill: none;
+            stroke: var(--text-primary);
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            transition: all 0.3s ease;
+        }
+
+        .sun-icon { display: block; }
+        .moon-icon { display: none; }
+        [data-theme="dark"] .sun-icon { display: none; }
+        [data-theme="dark"] .moon-icon { display: block; }
+
+        /* ===== شريط التمرير المخصص ===== */
+        .custom-scrollbar-track {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 18px;
+            height: 100%;
+            z-index: 998;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .custom-scrollbar-track.visible,
+        .custom-scrollbar-track:hover {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .custom-scrollbar-thumb {
+            position: absolute;
+            top: 0;
+            right: 4px;
+            width: 6px;
+            background: var(--accent);
+            border-radius: 10px;
+            cursor: grab;
+            transition: all 0.2s ease;
+            will-change: transform;
+            opacity: 0.5;
+        }
+
+        .custom-scrollbar-track:hover .custom-scrollbar-thumb,
+        .custom-scrollbar-track.dragging .custom-scrollbar-thumb {
+            width: 10px;
+            right: 2px;
+            opacity: 1;
+            box-shadow: 0 0 15px var(--accent-glow);
+        }
+
+        .custom-scrollbar-track.dragging .custom-scrollbar-thumb {
+            cursor: grabbing;
+            transition: none;
+        }
+
+        /* ===== أنيميشن الظهور ===== */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .fade-up.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== استجابة للأجهزة ===== */
+        @media (max-width: 640px) {
+            .container {
+                padding: 20px 12px 40px;
+            }
+
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            .content-card,
+            .intro-card,
+            .quote-block,
+            footer {
+                padding: 25px 20px;
+            }
+
+            .modern-feedback-section {
+                padding: 35px 20px;
+            }
+
+            .theme-toggle-btn {
+                bottom: 20px;
+                left: 20px;
+                width: 50px;
+                height: 50px;
+            }
+
+            .custom-scrollbar-track {
+                width: 12px;
+            }
+
+            .whatsapp-btn,
+            .btn-send-feedback {
+                padding: 12px 25px;
+                font-size: 1rem;
+            }
+
+            .modal-buttons {
+                flex-direction: column;
+            }
+
+            .section-title {
+                font-size: 1.3rem;
+            }
+
+            .quote-block {
+                font-size: 1.1rem;
+                padding: 30px 20px;
+            }
+        }
+
+        /* ===== تأثيرات إضافية ===== */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .main-image-wrapper {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .main-image-wrapper:hover {
+            animation-play-state: paused;
+        }
+    </style>
+</head>
+<body>
+    <!-- شريط التقدم -->
+    <div class="progress-container">
+        <div class="progress-bar" id="readingProgress"></div>
+    </div>
+
+    <!-- زر تغيير المظهر -->
+    <button class="theme-toggle-btn" id="themeToggle" aria-label="تغيير المظهر">
+        <svg class="sun-icon" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+        <svg class="moon-icon" viewBox="0 0 24 24">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+    </button>
+
+    <!-- شريط التمرير المخصص -->
+    <div class="custom-scrollbar-track" id="scrollTrack">
+        <div class="custom-scrollbar-thumb" id="scrollThumb"></div>
+    </div>
+
+    <main class="container">
+        <!-- الصورة الرئيسية -->
+        <div class="main-image-wrapper fade-up">
+            <img src="1000102048.png" alt="الحب وحده لا يكفي">
+            <div class="image-overlay"></div>
+        </div>
+
+        <!-- الهيدر -->
+        <header class="fade-up">
+            <div class="badge">
+                <span class="badge-dot"></span>
+                مقال · علاقات
+            </div>
+            <h1>الحب وحده لا يكفي</h1>
+            <div class="subtitle">ثلاث علامات تدل على الاحترام والأمان العاطفي في العلاقات طويلة الأمد</div>
+            <div class="read-time">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+                وقت القراءة: 3 دقائق
+            </div>
+        </header>
+
+        <article>
+            <!-- المقدمة -->
+            <div class="intro-card fade-up">
+                <p>المقال يشرح أن الحب وحده لا يكفي لنجاح العلاقة على المدى الطويل..</p>
+                <p>احترام الشريك يظهر في تفاصيل يومية بسيطة لكنها عميقة، تعكس مستوى الأمان العاطفي في العلاقة وتحدد مصيرها.</p>
+            </div>
+
+            <!-- العلامة الأولى -->
+            <section>
+                <h2 class="section-title fade-up">
+                    <span class="section-number">01</span>
+                    كيف يقدم لك الدعم؟
+                </h2>
+                <div class="content-card fade-up">
+                    <p><span class="highlight">«يسأل إن كنت تريد نصيحة أم مجرد من يصغي»</span></p>
+                    <p>كثيرون عندما يسمعون مشكلة من شريكهم يندفعون فورًا لإعطاء حلول، مع أن الطرف الآخر قد يحتاج فقط إلى من يسمعه ويتفهم مشاعره. هذا الأسلوب "الإصلاحي" قد يُشعر الآخر بأنه غير مسموع أو أن مشاعره ليست مهمة، رغم أن النية في الأصل هي المساعدة.</p>
+                    <p>يشير المقال إلى بحث في <strong>Journal of Social and Clinical Psychology</strong> يفرّق بين نوعين من الدعم:</p>
+                    <ul class="sub-list">
+                        <li><strong>دعم لا توجيهي:</strong> يساعدك على التكيف دون أن يسيطر عليك، ويرتبط بمزيد من الأمل والتفاؤل.</li>
+                        <li><strong>دعم توجيهي:</strong> يملي عليك كيف يجب أن تتصرف، ويرتبط بزيادة الاكتئاب والوحدة حتى مع توافر "الدعم" ظاهريًا.</li>
+                    </ul>
+                    <p>عندما يسألك الشريك: «تريد نصيحة أم فقط أسمعك؟» فهو يعترف بحدودك، ويحترم قدرتك على تحديد نوع المساندة التي تناسبك، ويجعلك تشعر بأنك مفهوم لا مُدار.</p>
+                    <p style="margin-top: 20px; font-style: italic; color: var(--text-secondary);">من الجيد أن نتبنى هذا السلوك أيضًا: نسأل الشخص الذي أمامنا ببساطة: «ما الذي تحتاجه مني الآن؟ نصيحة أم حضن/إنصات؟». هذه الخطوة الصغيرة تقلل سوء الفهم وتعمّق الشعور بالاتصال.</p>
+                </div>
+            </section>
+
+            <!-- الاقتباس -->
+            <div class="quote-block fade-up">
+                التعاطف والحضور الصامت يكفيان أحيانًا ليكونا أقوى أنواع الدعم
+            </div>
+
+            <!-- العلامة الثانية -->
+            <section>
+                <h2 class="section-title fade-up">
+                    <span class="section-number">02</span>
+                    كيف يتعامل مع مشاعره هو؟
+                </h2>
+                <div class="content-card fade-up">
+                    <p><span class="highlight">«يتحمل مسؤولية مشاعره الخاصة»</span></p>
+                    <p>في العلاقات القريبة من الطبيعي أن ترتفع حدة الانفعالات، لكن الفرق الجوهري هو كيف يُدار هذا الانفعال. بعض الناس عندما يغضبون يلقون العبء على الشريك: لوم، تفريغ عدواني، أو توقّع أن يقوم الآخر "بإصلاح" حالتهم النفسية.</p>
+                    <p>يذكر المقال بحثًا في <strong>Journal of Social and Personal Relationships</strong> بيّن أن إعادة تفسير الخلاف بشكل إيجابي تجعل الشخص يتذكر ما قيل بدقة أكبر، ما يساعد على حوار أوضح وبناء أكثر. في المقابل، كبت المشاعر يجعل الشخص مركزًا على مشاعره فقط، فيصبح التواصل أقل دقة وأكثر توترًا.</p>
+                    <p>الشريك الذي يعمل على تهدئة نفسه، ومحاولة فهم مشاعره، بدل أن يُحمّلك مسؤولية حالته المزاجية، يُظهر احترامًا لك وللعلاقة. لا يضعك في موقع "المُنقِذ" أو "المُهدّئ الإجباري"، بل يتعامل مع مشاعره كمسؤولية شخصية، ويطلب الدعم بدون ابتزاز أو لوم. هذا يقلل التوتر المتكرر ويحمي العلاقة من دوامة <span style="color: var(--danger); font-weight: 800;">«أنا غاضب إذًا أنت الملام وعليك أن تُصلحني»</span>.</p>
+                </div>
+            </section>
+
+            <!-- العلامة الثالثة -->
+            <section>
+                <h2 class="section-title fade-up">
+                    <span class="section-number">03</span>
+                    كيف يختلف معك؟
+                </h2>
+                <div class="content-card fade-up">
+                    <p><span class="highlight">«يستطيع أن يختلف معك دون أن يهاجم شخصيتك»</span></p>
+                    <p>الخلافات أمر طبيعي ولا مفر منه بين أي شخصين، لكن الأهم هو أين يوجّه الطرفان تركيزهما أثناء الخلاف. عندما يتحول التركيز من السلوك إلى الشخصية (من "تصرفك ضايقني" إلى "أنت شخص سيئ أو أناني") يبدأ الاحترام في التآكل.</p>
+                    <p>يستشهد المقال بأبحاث <strong>جون وجولي غوتّمان</strong> حول "فرسان القيامة الأربعة" في العلاقات: النقد، الدفاعية، الانسحاب، والاحتقار. وجدوا أن الاحتقار (السخرية، التقليل، الترفع، أو الإيحاء بالتفوق) هو أقوى مُتنبّئ بالطلاق، لأنه يحول الخلاف من "نحن ضد المشكلة" إلى "أنا ضدك لأنك أنت المشكلة".</p>
+                    <p>أظهرت دراسة متابعة لست سنوات أن الثلاث دقائق الأولى من بداية الخلاف تتنبأ باستمرار الزواج أو نهايته. الشريك المحترم يركز في الخلاف على السلوك المحدد: «جرحني لما قلت كذا» بدل «أنت دائمًا أناني/أنت لا تهتم». قدرته على التعبير عن الاختلاف دون تحقير شخصيتك تعني أنه يقدّر قيمتك كإنسان، ولا يضحي بك لمجرد أن "يفوز" بالنقاش.</p>
+                </div>
+            </section>
+        </article>
+
+        <!-- الفوتر -->
+        <footer class="fade-up">
+            <h3>رسالة المقال</h3>
+            <p>يريد المقال أن يلفت النظر إلى أن احترام الشريك يظهر في ثلاثة محاور يومية بسيطة لكن عميقة:</p>
+            <ul class="sub-list" style="margin-top: 15px; margin-bottom: 25px;">
+                <li><strong>كيف يستمع لك ويدعمك:</strong> هل يسأل عن نوع الدعم أم يفرضه؟</li>
+                <li><strong>كيف يتعامل مع مشاعره:</strong> هل يتحمل مسؤوليتها أم يلقيها عليك؟</li>
+                <li><strong>كيف يختلف معك:</strong> هل يهاجم الموضوع أم يهاجمك أنت؟</li>
+            </ul>
+            <p><strong>هذه الثلاثية تعكس مستوى الأمان العاطفي في العلاقة.</strong></p>
+        </footer>
+
+        <!-- قسم النقاش -->
+        <section class="modern-feedback-section fade-up">
+            <h3 class="feedback-title">اكتمل النص.. وبدأ دورك</h3>
+            <p class="feedback-desc">هل تلاقت هذه السطور مع تجربة خضتها في واقعك؟ أم أن لك زاوية أخرى أعمق لقراءة المشهد؟ يسعدني أن أستمع إلى صوتك، فكل فكرة تضيفها هي إضاءة جديدة. المساحة هنا لك لنتشارك الرؤى في حوار خاص، يمكنك الآن إرسال رأيك <strong>كـ "مجهول"</strong> لضمان حريتك وخصوصيتك التامة دون الحاجة لتسجيل الدخول.</p>
+            
+            <textarea id="userFeedbackText" class="feedback-textarea" placeholder="دوّن أفكارك وتجربتك هنا بكل شفافية..."></textarea>
+            
+            <button onclick="openConfirmationModal()" class="btn-send-feedback">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                </svg>
+                شاركني رأيك بسرية تامة
+            </button>
+
+            <div class="share-container">
+                <a href="https://wa.me/?text=اقرأ هذا المقال الرائع: الحب وحده لا يكفي - ثلاث علامات تدل على الاحترام والأمان العاطفي في العلاقات%0Ahttps://3aazo1.github.io/A95/" 
+                   target="_blank" 
+                   rel="noopener noreferrer" 
+                   class="whatsapp-btn" 
+                   aria-label="مشاركة المقال على واتساب">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
+                    </svg>
+                    شارك المقال مع أصدقائك
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- المودال -->
+    <div id="confirmationModal" class="custom-modal-overlay">
+        <div class="custom-modal-box">
+            <div class="modal-icon">
+                <svg viewBox="0 0 24 24">
+                    <path d="M22 2L11 13M22 2L15 22L11 13M11 13L2 9L22 2"></path>
+                </svg>
+            </div>
+            <h4 class="custom-modal-title">هل أنت مستعد للمشاركة بسرية؟</h4>
+            <p class="custom-modal-desc">سيتم <strong>نسخ النص</strong> الذي كتبته للتو وتوجيهك إلى صندوق (Tellonym). لن يتم كشف هويتك ولا يُشترط تسجيل الدخول، فقط قم بـ "لصق" رسالتك وأرسلها بكل أمان.</p>
+            <div class="modal-buttons">
+                <button onclick="confirmSend()" class="btn-modal-confirm">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="22" y1="2" x2="11" y2="13"></line>
+                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                    </svg>
+                    نعم، انتقل للمنصة
+                </button>
+                <button onclick="closeConfirmationModal()" class="btn-modal-cancel">إلغاء الأمر</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ===== شريط تقدم القراءة =====
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById("readingProgress").style.width = scrolled + "%";
+            
+            requestTick();
+            triggerScrollbarVisibility();
+        });
+
+        // ===== إدارة الوضع الليلي =====
+        const themeToggle = document.getElementById('themeToggle');
+        const savedTheme = localStorage.getItem('theme');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        
+        if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        } else {
+            document.documentElement.setAttribute('data-theme', 'light');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        });
+
+        // ===== أنيميشن الظهور =====
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+        // ===== إدارة النقاش والمودال =====
+        const modal = document.getElementById('confirmationModal');
+        let currentFeedbackText = '';
+
+        function openConfirmationModal() {
+            const feedbackInput = document.getElementById('userFeedbackText').value;
+            
+            if (feedbackInput.trim() === '') {
+                document.getElementById('userFeedbackText').style.borderColor = 'var(--danger)';
+                document.getElementById('userFeedbackText').placeholder = 'يرجى كتابة أفكارك هنا قبل الانتقال...';
+                document.getElementById('userFeedbackText').focus();
+                
+                setTimeout(() => {
+                    document.getElementById('userFeedbackText').style.borderColor = 'var(--border)';
+                }, 2000);
+                return;
+            }
+
+            currentFeedbackText = feedbackInput;
+            modal.classList.add('active');
+        }
+
+        function closeConfirmationModal() {
+            modal.classList.remove('active');
+        }
+
+        function confirmSend() {
+            const tellonymUrl = 'https://tellonym.me/abdul3ziz95';
+            
+            navigator.clipboard.writeText(currentFeedbackText).then(() => {
+                window.open(tellonymUrl, '_blank');
+                closeConfirmationModal();
+                
+                document.getElementById('userFeedbackText').value = '';
+                document.getElementById('userFeedbackText').placeholder = 'تم نسخ رسالتك.. قم بلصقها الآن في المنصة بكل أمان!';
+            }).catch(() => {
+                window.open(tellonymUrl, '_blank');
+                closeConfirmationModal();
+            });
+        }
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeConfirmationModal();
+        });
+
+        // ===== شريط التمرير المخصص =====
+        const scrollTrack = document.getElementById('scrollTrack');
+        const scrollThumb = document.getElementById('scrollThumb');
+        let fadeTimeout;
+        let isDragging = false;
+        let startY = 0;
+        let startScrollTop = 0;
+        let ticking = false;
+
+        function updateScrollbar() {
+            const totalHeight = document.documentElement.scrollHeight;
+            const viewportHeight = window.innerHeight;
+            const scrollTop = window.scrollY;
+
+            if (totalHeight <= viewportHeight) {
+                scrollTrack.style.display = 'none';
+                return;
+            }
+            scrollTrack.style.display = 'block';
+
+            const thumbHeight = Math.max((viewportHeight / totalHeight) * viewportHeight, 50);
+            scrollThumb.style.height = `${thumbHeight}px`;
+
+            const maxScrollTop = totalHeight - viewportHeight;
+            const maxThumbTop = viewportHeight - thumbHeight;
+            const thumbTop = (scrollTop / maxScrollTop) * maxThumbTop;
+            
+            scrollThumb.style.transform = `translateY(${thumbTop}px)`;
+            ticking = false;
+        }
+
+        function requestTick() {
+            if (!ticking) {
+                window.requestAnimationFrame(updateScrollbar);
+                ticking = true;
+            }
+        }
+
+        function triggerScrollbarVisibility() {
+            scrollTrack.classList.add('visible');
+            clearTimeout(fadeTimeout);
+            if (!isDragging) {
+                fadeTimeout = setTimeout(() => {
+                    scrollTrack.classList.remove('visible');
+                }, 1200);
+            }
+        }
+
+        window.addEventListener('resize', requestTick);
+
+        function handleMove(clientY) {
+            const totalHeight = document.documentElement.scrollHeight;
+            const viewportHeight = window.innerHeight;
+            const thumbHeight = scrollThumb.offsetHeight;
+            
+            const deltaY = clientY - startY;
+            const maxThumbTop = viewportHeight - thumbHeight;
+            const maxScrollTop = totalHeight - viewportHeight;
+
+            const currentThumbTop = ((startScrollTop / maxScrollTop) * maxThumbTop) + deltaY;
+            const boundedThumbTop = Math.max(0, Math.min(maxThumbTop, currentThumbTop));
+
+            const targetScrollTop = (boundedThumbTop / maxThumbTop) * maxScrollTop;
+            window.scrollTo(0, targetScrollTop);
+        }
+
+        scrollThumb.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            startY = e.clientY;
+            startScrollTop = window.scrollY;
+            scrollTrack.classList.add('dragging', 'visible');
+            document.body.style.userSelect = 'none';
+            clearTimeout(fadeTimeout);
+            e.preventDefault();
+        });
+
+        window.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            window.requestAnimationFrame(() => handleMove(e.clientY));
+        }, { passive: true });
+
+        scrollThumb.addEventListener('touchstart', (e) => {
+            isDragging = true;
+            startY = e.touches[0].clientY;
+            startScrollTop = window.scrollY;
+            scrollTrack.classList.add('dragging', 'visible');
+            clearTimeout(fadeTimeout);
+        }, { passive: true });
+
+        window.addEventListener('touchmove', (e) => {
+            if (!isDragging) return;
+            window.requestAnimationFrame(() => handleMove(e.touches[0].clientY));
+        }, { passive: true });
+
+        const endDrag = () => {
+            if (isDragging) {
+                isDragging = false;
+                scrollTrack.classList.remove('dragging');
+                document.body.style.userSelect = '';
+                triggerScrollbarVisibility();
+            }
+        };
+
+        window.addEventListener('mouseup', endDrag);
+        window.addEventListener('touchend', endDrag);
+
+        updateScrollbar();
+    </script>
+</body>
+</html>

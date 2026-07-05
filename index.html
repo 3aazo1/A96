@@ -64,6 +64,15 @@
             margin: 0;
             padding: 0;
         }
+/* ===== إخفاء شريط التمرير الافتراضي للمتصفح ===== */
+html, body {
+    scrollbar-width: none; 
+    -ms-overflow-style: none; 
+}
+
+html::-webkit-scrollbar, body::-webkit-scrollbar {
+    display: none; 
+}
 
         html {
             scroll-behavior: smooth;

@@ -32,6 +32,9 @@
             --gradient-danger: linear-gradient(135deg, #ef4444 0%, #f97316 100%);
             --gradient-bg: radial-gradient(circle at 0% 0%, rgba(99, 102, 241, 0.03) 0%, transparent 50%),
                             radial-gradient(circle at 100% 100%, rgba(139, 92, 246, 0.03) 0%, transparent 50%);
+            --success-color: #10b981;
+            --success-bg: rgba(16, 185, 129, 0.1);
+            --success-border: rgba(16, 185, 129, 0.2);
         }
 
         [data-theme="dark"] {
@@ -57,6 +60,9 @@
             --glass-shadow: 0 8px 32px rgba(129, 140, 248, 0.15);
             --gradient-bg: radial-gradient(circle at 0% 0%, rgba(129, 140, 248, 0.08) 0%, transparent 50%),
                             radial-gradient(circle at 100% 100%, rgba(139, 92, 246, 0.08) 0%, transparent 50%);
+            --success-color: #34d399;
+            --success-bg: rgba(52, 211, 153, 0.15);
+            --success-border: rgba(52, 211, 153, 0.3);
         }
 
         * {
@@ -64,15 +70,16 @@
             margin: 0;
             padding: 0;
         }
-/* ===== إخفاء شريط التمرير الافتراضي للمتصفح ===== */
-html, body {
-    scrollbar-width: none; 
-    -ms-overflow-style: none; 
-}
+        
+        /* ===== إخفاء شريط التمرير الافتراضي للمتصفح ===== */
+        html, body {
+            scrollbar-width: none; 
+            -ms-overflow-style: none; 
+        }
 
-html::-webkit-scrollbar, body::-webkit-scrollbar {
-    display: none; 
-}
+        html::-webkit-scrollbar, body::-webkit-scrollbar {
+            display: none; 
+        }
 
         html {
             scroll-behavior: smooth;
@@ -187,7 +194,7 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
             color: var(--accent);
             margin-bottom: 25px;
             letter-spacing: 0.5px;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .badge:hover {
@@ -198,12 +205,25 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
             box-shadow: 0 10px 25px var(--accent-glow);
         }
 
+        /* ستايل ميزة تمت القراءة الفاخر */
+        .badge.is-read {
+            background: var(--success-bg) !important;
+            color: var(--success-color) !important;
+            border-color: var(--success-border) !important;
+        }
+
+        .badge.is-read .badge-dot {
+            background: var(--success-color) !important;
+            box-shadow: 0 0 10px var(--success-color);
+        }
+
         .badge-dot {
             width: 8px;
             height: 8px;
             background: var(--accent);
             border-radius: 50%;
             animation: pulse-dot 2s infinite;
+            transition: all 0.4s ease;
         }
 
         @keyframes pulse-dot {
@@ -1016,12 +1036,10 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
     </style>
 </head>
 <body>
-    <!-- شريط التقدم -->
     <div class="progress-container">
         <div class="progress-bar" id="readingProgress"></div>
     </div>
 
-    <!-- زر تغيير المظهر -->
     <button class="theme-toggle-btn" id="themeToggle" aria-label="تغيير المظهر">
         <svg class="sun-icon" viewBox="0 0 24 24">
             <circle cx="12" cy="12" r="5"></circle>
@@ -1039,23 +1057,20 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
         </svg>
     </button>
 
-    <!-- شريط التمرير المخصص -->
     <div class="custom-scrollbar-track" id="scrollTrack">
         <div class="custom-scrollbar-thumb" id="scrollThumb"></div>
     </div>
 
     <main class="container">
-        <!-- الصورة الرئيسية -->
         <div class="main-image-wrapper fade-up">
             <img src="1000102048.png" alt="الحب وحده لا يكفي">
             <div class="image-overlay"></div>
         </div>
 
-        <!-- الهيدر -->
         <header class="fade-up">
-            <div class="badge">
+            <div class="badge" id="articleBadge">
                 <span class="badge-dot"></span>
-                مقال · علاقات
+                <span id="badgeText">مقال · علاقات</span>
             </div>
             <h1>الحب وحده لا يكفي</h1>
             <div class="subtitle">ثلاث علامات تدل على الاحترام والأمان العاطفي في العلاقات طويلة الأمد</div>
@@ -1069,13 +1084,11 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
         </header>
 
         <article>
-            <!-- المقدمة -->
             <div class="intro-card fade-up">
                 <p>المقال يشرح أن الحب وحده لا يكفي لنجاح العلاقة على المدى الطويل..</p>
                 <p>احترام الشريك يظهر في تفاصيل يومية بسيطة لكنها عميقة، تعكس مستوى الأمان العاطفي في العلاقة وتحدد مصيرها.</p>
             </div>
 
-            <!-- العلامة الأولى -->
             <section>
                 <h2 class="section-title fade-up">
                     <span class="section-number">01</span>
@@ -1094,12 +1107,10 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
                 </div>
             </section>
 
-            <!-- الاقتباس -->
             <div class="quote-block fade-up">
                 التعاطف والحضور الصامت يكفيان أحيانًا ليكونا أقوى أنواع الدعم
             </div>
 
-            <!-- العلامة الثانية -->
             <section>
                 <h2 class="section-title fade-up">
                     <span class="section-number">02</span>
@@ -1108,12 +1119,11 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
                 <div class="content-card fade-up">
                     <p><span class="highlight">«يتحمل مسؤولية مشاعره الخاصة»</span></p>
                     <p>في العلاقات القريبة من الطبيعي أن ترتفع حدة الانفعالات، لكن الفرق الجوهري هو كيف يُدار هذا الانفعال. بعض الناس عندما يغضبون يلقون العبء على الشريك: لوم، تفريغ عدواني، أو توقّع أن يقوم الآخر "بإصلاح" حالتهم النفسية.</p>
-                    <p>يذكر المقال بحثًا في <strong>Journal of Social and Personal Relationships</strong> بيّن أن إعادة تفسير الخلاف بشكل إيجابي تجعل الشخص يتذكر ما قيل بدقة أكبر، ما يساعد على حوار أوضح وبناء أكثر. في المقابل، كبت المشاعر يجعل الشخص مركزًا على مشاعره فقط، فيصبح التواصل أقل دقة وأكثر توترًا.</p>
+                    <p>يذكر المقال بحثًا في <strong>Journal of Social and Personal Relationships</strong> بيّن أن إعادة تفسير الخلاف بشكل إيجابي تجعل الشخص يتذكر ما قيل بدقة أكبر، ما يساعد على حوار أوضح وبناء أكثر. في المقابل, كبت المشاعر يجعل الشخص مركزًا على مشاعره فقط، فيصبح التواصل أقل دقة وأكثر توترًا.</p>
                     <p>الشريك الذي يعمل على تهدئة نفسه، ومحاولة فهم مشاعره، بدل أن يُحمّلك مسؤولية حالته المزاجية، يُظهر احترامًا لك وللعلاقة. لا يضعك في موقع "المُنقِذ" أو "المُهدّئ الإجباري"، بل يتعامل مع مشاعره كمسؤولية شخصية، ويطلب الدعم بدون ابتزاز أو لوم. هذا يقلل التوتر المتكرر ويحمي العلاقة من دوامة <span style="color: var(--danger); font-weight: 800;">«أنا غاضب إذًا أنت الملام وعليك أن تُصلحني»</span>.</p>
                 </div>
             </section>
 
-            <!-- العلامة الثالثة -->
             <section>
                 <h2 class="section-title fade-up">
                     <span class="section-number">03</span>
@@ -1128,7 +1138,6 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
             </section>
         </article>
 
-        <!-- الفوتر -->
         <footer class="fade-up">
             <h3>رسالة المقال</h3>
             <p>يريد المقال أن يلفت النظر إلى أن احترام الشريك يظهر في ثلاثة محاور يومية بسيطة لكن عميقة:</p>
@@ -1140,7 +1149,6 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
             <p><strong>هذه الثلاثية تعكس مستوى الأمان العاطفي في العلاقة.</strong></p>
         </footer>
 
-        <!-- قسم النقاش -->
         <section class="modern-feedback-section fade-up">
             <h3 class="feedback-title">اكتمل النص.. وبدأ دورك</h3>
             <p class="feedback-desc">هل تلاقت هذه السطور مع تجربة خضتها في واقعك؟ أم أن لك زاوية أخرى أعمق لقراءة المشهد؟ يسعدني أن أستمع إلى صوتك، فكل فكرة تضيفها هي إضاءة جديدة. المساحة هنا لك لنتشارك الرؤى في حوار خاص، يمكنك الآن إرسال رأيك <strong>كـ "مجهول"</strong> لضمان حريتك وخصوصيتك التامة دون الحاجة لتسجيل الدخول.</p>
@@ -1169,7 +1177,6 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
         </section>
     </main>
 
-    <!-- المودال -->
     <div id="confirmationModal" class="custom-modal-overlay">
         <div class="custom-modal-box">
             <div class="modal-icon">
@@ -1193,6 +1200,29 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
     </div>
 
     <script>
+        // ===== نظام ميزة تمت القراءة لحفظ الحالة وعرضها =====
+        const articleId = "love_is_not_enough_A96"; // معرف فريد للمقال لضمان عدم التداخل
+
+        function setArticleAsRead() {
+            localStorage.setItem(articleId, 'true');
+            const badge = document.getElementById('articleBadge');
+            const badgeText = document.getElementById('badgeText');
+            if (badge && badgeText) {
+                badge.classList.add('is-read');
+                badgeText.textContent = '✓ تمت القراءة';
+            }
+        }
+
+        function checkArticleReadStatus() {
+            if (localStorage.getItem(articleId) === 'true') {
+                setArticleAsRead();
+            }
+        }
+
+        // تحقق من الحالة فور تحميل الصفحة
+        document.addEventListener('DOMContentLoaded', checkArticleReadStatus);
+
+
         // ===== شريط تقدم القراءة =====
         window.addEventListener('scroll', () => {
             const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
@@ -1200,6 +1230,11 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
             const scrolled = (winScroll / height) * 100;
             document.getElementById("readingProgress").style.width = scrolled + "%";
             
+            // إذا تخطى المستخدم 95% من الصفحة، يتم اعتبار المقال "مقروءاً" تلقائياً
+            if (scrolled >= 95) {
+                setArticleAsRead();
+            }
+
             requestTick();
             triggerScrollbarVisibility();
         });
